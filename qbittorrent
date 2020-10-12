@@ -1,0 +1,14 @@
+docker create \
+  --name=qbittorrent \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/Budapest \
+  -e UMASK_SET=022 \
+  -e WEBUI_PORT=8070 \
+  -p 6881:6881 \
+  -p 6881:6881/udp \
+  -p 8070:8070 \
+  -v /home/docker/qbittorrent:/config \
+  -v /mnt/data1/torrent:/downloads \
+  --restart unless-stopped \
+  linuxserver/qbittorrent
